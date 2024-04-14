@@ -13,5 +13,9 @@ Please make sure to have the following packages installed before running any of 
 To see how each question works, please check the commenting of each program.
 
 Note Q.6 by James:
-For calculating percentages i got all the porportions from Question 3 and removed the proportion of NA and recalculate the percentages for each aspect not including NA for each new value of the proportions
+For calculating percentages i got all the porportions from Question 3 and removed the proportion of NA and recalculate the percentages for each aspect not including NA for each new value of the proportions.
+
+
+Note Q.7 by Zi:
+When running code we see error message "Removed 2 rows containing missing values or values outside the scale range (`geom_point()`)", this removes null values and outliers and has no major impact on the resulting graph.
 
