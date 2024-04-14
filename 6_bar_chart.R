@@ -2,44 +2,28 @@ library(readxl)
 library(dplyr)
 library(ggplot2)
 
-
+# Filter data -------------------------
 Q6_frequency <- proportion_cal(aspect_and_frquency)
 
-#Get the value of the NA aspect
-NAValue <- (Q6_frequency[1, 'Proportions'])
-
-
-#Remove the NA aspect row from the data frame
-Q6_frequency <- Q6_frequency[Q6_frequency$Aspect != 'NA',]
-
-#Get the sum of the reaming proportions the recalculate their percentages
-remainingProportion <- sum(Q6_frequency$Proportions)
-
-#Change proportions to percentages
-ReaminingPercentage <- remainingProportion * 100
+NAValue <- (Q6_frequency[1, 'Proportions'])                                     # Get the value of the NA aspect
+Q6_frequency <- Q6_frequency[Q6_frequency$Aspect != 'NA',]                      # Remove the NA aspect row from the data frame
+remainingProportion <- sum(Q6_frequency$Proportions)                            # Get the sum of the reaming proportions the recalculate their percentages
+ReaminingPercentage <- remainingProportion * 100                                # Change proportions to percentages
 NAPercentage <- NAValue * 100
-
-#Readjust percentages
-adjustmentFactor <- NAPercentage / ReaminingPercentage
-
-
-#Order the data from from highest to lowest in terms of proportions
-Q6_frequency <- Q6_frequency[order(-Q6_frequency$Proportions), ]
+adjustmentFactor <- NAPercentage / ReaminingPercentage                          # Readjust percentages
+Q6_frequency <- Q6_frequency[order(-Q6_frequency$Proportions), ]                # Order the data from from highest to lowest in terms of proportions
+Q6_frequency <- head(Q6_frequency, 5)                                           # Get the top 5 rows in terms of their proportions of aspects
 
 
-#Get the top 5 rows in terms of their proportions of aspects
-Q6_frequency <- head(Q6_frequency, 5)
-
-
+# Recalculating the percentage without NA
 Q6_Proportions <- Q6_frequency$Proportions
 Q6_Proportions <- Q6_Proportions * 100
 Q6_Proportions <- Q6_Proportions * adjustmentFactor
 Q6_Proportions <- round(Q6_Proportions, digits = 2)
 Q6_Proportions <- paste0(Q6_Proportions, "%")
-
 newProportions <- (Q6_frequency[3] * adjustmentFactor) * 100
 Q6_frequency$Proportions <- newProportions
-View(Q6_frequency)
+
 
 bar_plot <- ggplot(data = Q6_frequency, aes(x = Aspect, y = Proportions$Proportions)) +
   geom_bar(stat = "identity", width = 0.5, fill = "skyblue") +
@@ -62,5 +46,5 @@ bar_plot <- ggplot(data = Q6_frequency, aes(x = Aspect, y = Proportions$Proporti
         panel.grid.minor = element_blank(), #Remove minor grid lines
         panel.border = element_blank(), #Remove panel border
         axis.title = element_text(size = 12, face = "bold.italic"))
-
-print(bar_plot)
+ggsave("bar_chart.png", width = 30, height = 20, units = "cm")
+bar_plot

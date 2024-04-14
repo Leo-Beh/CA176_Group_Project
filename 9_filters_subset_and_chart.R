@@ -47,5 +47,5 @@ ggplot(data = filtered_companies_df, aes(x = Avg_salary, y = Ratings)) +        
         axis.title = element_text(size = 12, face = "bold.italic"))
 
 
-# Saveing the image -----------------------------
+# Saving the image -----------------------------
 ggsave("Scatter_Plot_of_Avg_Salary_vs_Ratings.png", width = 7, height = 5)
