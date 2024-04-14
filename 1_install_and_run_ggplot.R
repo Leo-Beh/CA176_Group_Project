@@ -2,7 +2,8 @@
 # install.packages("ggplot2")
 
 #Load the ggplot2 library
-library("ggplot2")
+library(readxl)
+library(ggplot2)
 
 #read and load the "companies" dataset into R using a downlaoded clean version
 companies_df <- read_excel("companies.xlsx")

@@ -22,7 +22,7 @@ frequency_count <- function(column){
 
 
 # Running the function -----------------------
-aspect_and_frquency <- frequency_count(underscore_unformatted_companies_df$Critically_rated_for)
+aspect_and_frquency <- frequency_count(companies_df$Critically_rated_for)
 aspect_and_frquency
 
 
