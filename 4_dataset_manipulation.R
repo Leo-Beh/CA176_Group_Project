@@ -1,5 +1,5 @@
 #load other file -----------------------------
-load("underscore_unformat_k.R")
+load("underscore_unformat_k.rdata")
 
 underscore_unformatted_companies_df$Industry <- 
   as.character(underscore_unformatted_companies_df$Industry)                    #converting all values in the industry column to characters

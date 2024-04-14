@@ -51,4 +51,5 @@ underscore_unformatted_companies_df$Industry <- sapply(underscore_unformatted_co
 View(underscore_unformatted_companies_df)
 
 # Saving the program ---------------------------------
-save(list = ls(all=T), file = "underscore_unformat_k.R")                        #saving the file as binary data
+# save(list = ls(all=T), file = "underscore_unformat_k.R")                      #saving the file as binary data
+save(underscore_unformatted_companies_df, file = "underscore_unformat_k.rdata")
