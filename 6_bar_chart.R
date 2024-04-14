@@ -25,6 +25,7 @@ newProportions <- (Q6_frequency[3] * adjustmentFactor) * 100
 Q6_frequency$Proportions <- newProportions
 
 
+# Load graph --------------------------
 bar_plot <- ggplot(data = Q6_frequency, aes(x = Aspect, y = Proportions$Proportions)) +
   geom_bar(stat = "identity", width = 0.5, fill = "skyblue") +
   geom_text(aes(label = Q6_Proportions), vjust = -0.3, color = "black", size = 4) +
@@ -35,16 +36,19 @@ bar_plot <- ggplot(data = Q6_frequency, aes(x = Aspect, y = Proportions$Proporti
     y = "Proportions",
     caption = "As shown on the graph Promations/Appraisal is clearly on of the main aspects in which compainies get rated for") +
   
-  ## Setting up the aesthetic of the graph
+  # Setting up the aesthetic of the graph
   theme(plot.title = element_text(hjust = 0.5, face = "bold.italic"),
         plot.subtitle = element_text(hjust = 0.5, face = "italic"),
         plot.caption = element_text(hjust = 0, face = 'italic'),
         legend.position = "right",
-        axis.text.x = element_text(angle = 45, hjust = 1, size = 10), #Rotate and adjust font size of x-axis labels
+        axis.text.x = element_text(angle = 45, hjust = 1, size = 10),           # Rotate and adjust font size of x-axis labels
         axis.text = element_text(size = 10, face = "italic"),
-        panel.grid.major = element_blank(), #Remove major grid lines
-        panel.grid.minor = element_blank(), #Remove minor grid lines
-        panel.border = element_blank(), #Remove panel border
+        panel.grid.major = element_blank(),                                     # Remove major grid lines
+        panel.grid.minor = element_blank(),                                     # Remove minor grid lines
+        panel.border = element_blank(),                                         # Remove panel border
         axis.title = element_text(size = 12, face = "bold.italic"))
+
+
+# Save graph ------------------------
 ggsave("bar_chart.png", width = 30, height = 20, units = "cm")
 bar_plot
