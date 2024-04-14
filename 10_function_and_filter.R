@@ -2,7 +2,7 @@ library(readxl)
 library(dplyr)
 
 
-# Creating function -------------------
+# Creating function ------------------------
 top_companies <- function(dataframe) {
   # filter, order and limiting the companies using "dplyr" package
   
@@ -15,5 +15,5 @@ top_companies <- function(dataframe) {
 }
 
 
-# View filtered data -----------------
+# View filtered data ----------------------
 View(top_companies(companies_df))
