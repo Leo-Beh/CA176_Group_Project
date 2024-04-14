@@ -11,7 +11,7 @@ top_companies <- function(dataframe) {
     arrange(desc(Ratings)) %>%                                                  # Arranging the "Ratings" column from highest to lowest
     slice(1:5)                                                                  # Selecting only the top 5 results
   
-  return (filtered_companies_df)                  
+  return (filtered_companies_df[,1:2])                  
 }
 
 
